@@ -3,98 +3,90 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Regalito Lessa</title>
+    <title>Para mi amor</title>
     <style>
         body {
             margin: 0;
             padding: 0;
-            font-family: Arial, sans-serif;
+            font-family: 'Dancing Script', cursive;
             text-align: center;
+            color: white;
             overflow: hidden;
-            background-color: #1e1e1e;
         }
-
-        /* Animación épica de entrada */
-        .pantalla-inicio {
+        /* Estilos para el video de fondo */
+        .video-background {
             position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
+            width: 100vw;
             height: 100vh;
-            background-color: #1e1e1e;
+            z-index: -1; /* Coloca el video por detrás del contenido */
+        }
+        /* Contenedor del mensaje y el botón */
+        .contenedor {
+            position: fixed;
+            width: 100vw;
+            height: 100vh;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
+            flex-direction: column;
             animation: fadeIn 2s ease-in-out;
         }
-
         @keyframes fadeIn {
-            0% { opacity: 0; transform: scale(0.8); }
+            0% { opacity: 0; transform: scale(0.9); }
             100% { opacity: 1; transform: scale(1); }
         }
-
-        .mensaje-poema {
+        .mensaje {
             font-size: 24px;
-            color: white;
-            font-family: 'Dancing Script', cursive;
-            background-color: rgba(0, 0, 0, 0.8);
-            border-radius: 15px;
-            padding: 20px 30px;
-            text-align: center;
+            background-color: rgba(138, 43, 226, 0.9); /* Morado con más opacidad */
+            padding: 25px;
+            border-radius: 20px;
             max-width: 80%;
-            margin-bottom: 30px;
+            box-shadow: 0 0 15px rgba(255, 20, 147, 0.8);
         }
-
-        .boton-inicio {
-            background-color: #1e1e1e;
-            color: white;
+        .boton {
+            background-color: #ff1493;
             border: 2px solid white;
+            color: white;
             padding: 15px 30px;
-            font-size: 20px;
+            font-size: 22px;
             cursor: pointer;
-            border-radius: 10px;
-            margin-top: -20px; /* Subir un poco el botón */
-            transition: background-color 0.3s ease;
-            animation: aparecer 1s forwards;
+            border-radius: 15px;
+            margin-top: 20px;
+            transition: 0.3s;
         }
-
-        .boton-inicio:hover {
+        .boton:hover {
             background-color: white;
-            color: #1e1e1e;
+            color: black;
         }
-
-        @keyframes aparecer {
-            0% { opacity: 0; }
-            100% { opacity: 1; }
-        }
-
-        #videoContainer {
+        .video-container {
             display: none;
             position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.7);
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.95);
             justify-content: center;
             align-items: center;
         }
-
-        #videoContainer iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
+        .video-container iframe {
+            width: 85%;
+            height: 85%;
+            border-radius: 20px;
         }
-
-        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
     </style>
 </head>
 <body>
-    <div class="pantalla-inicio" id="pantallaInicio">
-        <img src="https://postimg.cc/SXTvxs8w" alt="Imagen principal" style="width: 100%; height: 100%; object-fit: cover;">
-        <button class="boton-inicio" onclick="mostrarVideo()">Click acá amor 💝</button>
-        <div class="mensaje-poema">
+    <!-- Video de fondo -->
+    <div class="video-background">
+        <iframe src="https://www.youtube.com/embed/w3kEsS-sTjg?autoplay=1&loop=1&playlist=w3kEsS-sTjg" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+    </div>
+
+    <!-- Contenedor del mensaje y botón -->
+    <div class="contenedor" id="inicio">
+        <div class="mensaje">
             <p>Amor mío, hoy te traigo un regalo,<br>
                con cariño y todo mi ser.<br>
                Un regalo que expresa lo que siento,<br>
@@ -105,19 +97,18 @@
                en mi corazón, eres mi canción.<br>
             </p>
         </div>
+        <button class="boton" onclick="mostrarVideo()">Haz click aquí 💜</button>
     </div>
 
-    <div id="videoContainer">
-        <iframe id="videoFrame" src="https://www.youtube.com/embed/_oELcBpH1gg?autoplay=1" allow="fullscreen"></iframe>
+    <!-- Video adicional al hacer clic -->
+    <div class="video-container" id="videoContainer">
+        <iframe src="https://www.youtube.com/embed/w3kEsS-sTjg?autoplay=1" allow="fullscreen"></iframe>
     </div>
 
     <script>
         function mostrarVideo() {
-            document.getElementById("pantallaInicio").style.opacity = "0";
-            setTimeout(() => {
-                document.getElementById("pantallaInicio").style.display = "none";
-                document.getElementById("videoContainer").style.display = "flex";
-            }, 1000);
+            document.getElementById("inicio").style.display = "none";
+            document.getElementById("videoContainer").style.display = "flex";
         }
     </script>
 </body>
